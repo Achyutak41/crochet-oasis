@@ -1,4 +1,7 @@
+import { useProducts } from "../context/ProductContext";
+
 function Home() {
+  const { products } = useProducts();
   return (
     <main className="home-page">
 

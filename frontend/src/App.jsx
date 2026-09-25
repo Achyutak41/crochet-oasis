@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import { ProductProvider } from "./context/ProductContext";
+import AdminLogin from "./pages/admin/AdminLogin";
+
+import AdminProtectedRoute
+  from "./components/admin/AdminProtectedRoute";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -13,76 +19,138 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminProducts from "./pages/admin/AdminProducts";
+import { AdminAuthProvider } from "./context/AdminAuthContext";
 
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 
+function AppContent() {
+
+  const location = useLocation();
+
+  const isAdminRoute =
+    location.pathname.startsWith("/admin");
+
+  return (
+    <>
+      {!isAdminRoute && <Navbar />}
+
+      <Routes>
+
+        {/* Customer Routes */}
+
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/products"
+          element={<Products />}
+        />
+
+        <Route
+          path="/products/:id"
+          element={<ProductDetails />}
+        />
+
+        <Route
+          path="/cart"
+          element={<Cart />}
+        />
+
+        <Route
+          path="/order-request"
+          element={<OrderRequest />}
+        />
+
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+        <Route
+          path="/register"
+          element={<Register />}
+        />
+
+        <Route
+          path="/about"
+          element={<About />}
+        />
+
+        <Route
+          path="/contact"
+          element={<Contact />}
+        />
+
+        <Route
+          path="/orders"
+          element={<MyOrders />}
+        />
+
+         
+
+        {/* Admin */}
+
+        <Route
+  path="/admin/login"
+  element={<AdminLogin />}
+/>
+
+<Route
+  path="/admin"
+  element={
+    <AdminProtectedRoute>
+      <AdminDashboard />
+    </AdminProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/orders"
+  element={
+    <AdminProtectedRoute>
+      <AdminOrders />
+    </AdminProtectedRoute>
+  }
+/>
+
+<Route
+  path="/admin/products"
+  element={
+    <AdminProtectedRoute>
+      <AdminProducts />
+    </AdminProtectedRoute>
+  }
+/>
+
+      </Routes>
+
+      {!isAdminRoute && <Footer />}
+    </>
+  );
+}
 function App() {
   return (
     <AuthProvider>
+      <AdminAuthProvider>
       <CartProvider>
+
         <OrderProvider>
-        <BrowserRouter>
+          <ProductProvider>
+          <BrowserRouter>
 
-          <Navbar />
+          
+            <AppContent />
 
-          <Routes>
+          
+          </BrowserRouter>
 
-            <Route
-              path="/"
-              element={<Home />}
-            />
-
-            <Route
-              path="/products"
-              element={<Products />}
-            />
-          <Route
-  path="/order-request"
-  element={<OrderRequest />}
-/>
-            <Route
-              path="/products/:id"
-              element={<ProductDetails />}
-            />
-
-            <Route
-              path="/cart"
-              element={<Cart />}
-            />
-
-            <Route
-              path="/login"
-              element={<Login />}
-            />
-
-            <Route
-              path="/register"
-              element={<Register />}
-            />
-
-            <Route
-              path="/about"
-              element={<About />}
-            />
-
-            <Route
-              path="/contact"
-              element={<Contact />}
-            />
-
-            <Route
-                path="/orders"
-                element={<MyOrders />}
-              />
-
-          </Routes>
-
-          <Footer />
-
-        </BrowserRouter>
+          </ProductProvider>
         </OrderProvider>
+
       </CartProvider>
+    </AdminAuthProvider>
     </AuthProvider>
   );
 }

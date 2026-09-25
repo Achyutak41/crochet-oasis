@@ -1,7 +1,8 @@
 import ProductCard from "../components/ProductCard";
-import products from "../data/products";
+import { useProducts } from "../context/ProductContext";
 
 function Products() {
+  const { products } = useProducts();
   return (
     <main className="products-page">
 
