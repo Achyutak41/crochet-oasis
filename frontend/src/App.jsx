@@ -2,9 +2,11 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import { ProductProvider } from "./context/ProductContext";
 import AdminLogin from "./pages/admin/AdminLogin";
+import ResetPassword from "./pages/ResetPassword";
 
 import AdminProtectedRoute
   from "./components/admin/AdminProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -88,6 +90,14 @@ function AppContent() {
           element={<MyOrders />}
         />
 
+        <Route
+  path="/forgot-password"
+  element={<ForgotPassword />}
+/>
+        <Route
+  path="/reset-password"
+  element={<ResetPassword />}
+/>
          
 
         {/* Admin */}

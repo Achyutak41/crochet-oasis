@@ -1,38 +1,28 @@
-import {
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useContext, useState } from "react";
+import axios from "axios";
 
 const AdminAuthContext = createContext();
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export function AdminAuthProvider({ children }) {
-
   const [admin, setAdmin] = useState(() => {
+    const savedAdmin = localStorage.getItem("crochetOasisAdmin");
 
-    const savedAdmin =
-      localStorage.getItem("crochetOasisAdmin");
-
-    return savedAdmin
-      ? JSON.parse(savedAdmin)
-      : null;
+    return savedAdmin ? JSON.parse(savedAdmin) : null;
   });
 
+  const login = async (email, password) => {
+    try {
+      const response = await axios.post(
+        `${API_URL}/auth/admin-login`,
+        {
+          email: email.trim(),
+          password,
+        }
+      );
 
-  const login = (email, password) => {
-
-    // Temporary frontend credentials.
-    // This will be replaced by Flask authentication later.
-
-    if (
-      email === "admin@crochetoasis.com" &&
-      password === "admin123"
-    ) {
-
-      const adminData = {
-        name: "Crochet Oasis Admin",
-        email,
-      };
+      const adminData = response.data.user;
 
       setAdmin(adminData);
 
@@ -43,30 +33,26 @@ export function AdminAuthProvider({ children }) {
 
       return {
         success: true,
+        user: adminData,
+      };
+    } catch (error) {
+      console.error("Admin login failed:", error);
+
+      return {
+        success: false,
+        message:
+          error.response?.data?.message ||
+          "Unable to login as admin.",
       };
     }
-
-
-    return {
-      success: false,
-      message: "Invalid admin email or password.",
-    };
   };
-
 
   const logout = () => {
-
     setAdmin(null);
-
-    localStorage.removeItem(
-      "crochetOasisAdmin"
-    );
+    localStorage.removeItem("crochetOasisAdmin");
   };
 
-
-  const isAdminAuthenticated =
-    admin !== null;
-
+  const isAdminAuthenticated = admin !== null;
 
   return (
     <AdminAuthContext.Provider
@@ -81,7 +67,6 @@ export function AdminAuthProvider({ children }) {
     </AdminAuthContext.Provider>
   );
 }
-
 
 export function useAdminAuth() {
   return useContext(AdminAuthContext);

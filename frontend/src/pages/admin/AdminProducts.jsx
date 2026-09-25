@@ -140,48 +140,36 @@ function AdminProducts() {
   };
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+  event.preventDefault();
 
-    event.preventDefault();
+  const productData = {
+    name: productForm.name.trim(),
+    category: productForm.category,
+    price: Number(productForm.price),
+    image: productForm.image.trim(),
+    description: productForm.description.trim(),
+  };
 
-
-    const productData = {
-
-      name:
-        productForm.name.trim(),
-
-      category:
-        productForm.category,
-
-      price:
-        Number(productForm.price),
-
-      image:
-        productForm.image.trim(),
-
-      description:
-        productForm.description.trim(),
-
-    };
-
-
+  try {
     if (editingProduct) {
-
-      updateProduct(
+      await updateProduct(
         editingProduct.id,
         productData
       );
-
     } else {
-
-      addProduct(productData);
-
+      await addProduct(productData);
     }
 
-
     closeForm();
+  } catch (error) {
+    console.error("Product save failed:", error);
 
-  };
+    alert(
+      "Unable to save the product. Please check that the backend is running."
+    );
+  }
+};
 
 
   const handleDelete = (product) => {

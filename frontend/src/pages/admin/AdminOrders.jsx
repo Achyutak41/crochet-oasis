@@ -20,7 +20,7 @@ function AdminOrders() {
       const searchText = search.toLowerCase();
 
       const matchesSearch =
-        order.id.toLowerCase().includes(searchText) ||
+        String(order.id).toLowerCase().includes(searchText) ||
         order.customer.name
           .toLowerCase()
           .includes(searchText) ||

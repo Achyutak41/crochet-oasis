@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-
+import axios from "axios";
 function Register() {
   const navigate = useNavigate();
 
@@ -25,43 +25,38 @@ function Register() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setError("");
+  try {
+    console.log(
+    "REGISTER POST URL:",
+    `${import.meta.env.VITE_API_URL}/auth/register`
+  );
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/auth/register`,
+      {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        password: formData.password,
+      }
+    );
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.password ||
-      !formData.confirmPassword
-    ) {
-      setError("Please fill in all fields.");
-      return;
-    }
+    console.log("Registration successful:", response.data);
 
-    if (formData.password.length < 6) {
-      setError(
-        "Password must contain at least 6 characters."
-      );
-      return;
-    }
+    alert("Registration successful! Please login.");
 
-    if (
-      formData.password !== formData.confirmPassword
-    ) {
-      setError("Passwords do not match.");
-      return;
-    }
+    navigate("/login");
+  } catch (error) {
+    console.error("Registration failed:", error);
 
-    // Temporary frontend registration
-    login({
-      name: formData.name,
-      email: formData.email,
-    });
+    const message =
+      error.response?.data?.message ||
+      "Unable to register. Please try again.";
 
-    navigate("/");
-  };
+    alert(message);
+  }
+};
 
   return (
     <main className="auth-page">

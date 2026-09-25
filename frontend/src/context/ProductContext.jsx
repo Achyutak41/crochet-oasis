@@ -1,91 +1,105 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-
-import initialProducts from "../data/products";
+import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductContext = createContext();
 
+const API_URL = `${import.meta.env.VITE_API_URL}/products`;
+
 export function ProductProvider({ children }) {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const [products, setProducts] = useState(() => {
+  // Fetch products
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
-    const savedProducts =
-      localStorage.getItem("crochetOasisProducts");
+      const response = await axios.get(`${API_URL}/`);
 
-    return savedProducts
-      ? JSON.parse(savedProducts)
-      : initialProducts;
+      setProducts(response.data);
+    } catch (err) {
+      console.error("Failed to fetch products:", err);
+      setError("Unable to load products.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  });
-
-
+  // Load products when app starts
   useEffect(() => {
+    fetchProducts();
+  }, []);
 
-    localStorage.setItem(
-      "crochetOasisProducts",
-      JSON.stringify(products)
-    );
+  // Add product
+  const addProduct = async (productData) => {
+    try {
+      const response = await axios.post(
+        `${API_URL}/`,
+        productData
+      );
 
-  }, [products]);
+      setProducts((currentProducts) => [
+        ...currentProducts,
+        response.data,
+      ]);
 
-
-  const addProduct = (productData) => {
-
-    const newProduct = {
-
-      id: `product-${Date.now()}`,
-
-      ...productData,
-
-    };
-
-    setProducts((currentProducts) => [
-      ...currentProducts,
-      newProduct,
-    ]);
-
-    return newProduct;
+      return response.data;
+    } catch (err) {
+      console.error("Failed to add product:", err);
+      throw err;
+    }
   };
 
+  // Update product
+  const updateProduct = async (productId, productData) => {
+    try {
+      const response = await axios.put(
+        `${API_URL}/${productId}`,
+        productData
+      );
 
-  const updateProduct = (
-    productId,
-    productData
-  ) => {
+      setProducts((currentProducts) =>
+        currentProducts.map((product) =>
+          product.id === productId
+            ? response.data
+            : product
+        )
+      );
 
-    setProducts((currentProducts) =>
-      currentProducts.map((product) =>
-        product.id === productId
-          ? {
-              ...product,
-              ...productData,
-            }
-          : product
-      )
-    );
-
+      return response.data;
+    } catch (err) {
+      console.error("Failed to update product:", err);
+      throw err;
+    }
   };
 
+  // Delete product
+  const deleteProduct = async (productId) => {
+    try {
+      await axios.delete(
+        `${API_URL}/${productId}`
+      );
 
-  const deleteProduct = (productId) => {
-
-    setProducts((currentProducts) =>
-      currentProducts.filter(
-        (product) => product.id !== productId
-      )
-    );
-
+      setProducts((currentProducts) =>
+        currentProducts.filter(
+          (product) => product.id !== productId
+        )
+      );
+    } catch (err) {
+      console.error("Failed to delete product:", err);
+      throw err;
+    }
   };
-
 
   return (
     <ProductContext.Provider
       value={{
         products,
+        loading,
+        error,
+        fetchProducts,
         addProduct,
         updateProduct,
         deleteProduct,
@@ -95,7 +109,6 @@ export function ProductProvider({ children }) {
     </ProductContext.Provider>
   );
 }
-
 
 export function useProducts() {
   return useContext(ProductContext);

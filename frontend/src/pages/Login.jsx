@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import axios from "axios";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,24 +24,33 @@ function Login() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setError("");
+  try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/auth/login`,
+      {
+        email: formData.email.trim(),
+        password: formData.password,
+      }
+    );
 
-    if (!formData.email || !formData.password) {
-      setError("Please fill in all fields.");
-      return;
-    }
+    console.log("Login successful:", response.data);
 
-    // Temporary frontend authentication
-    login({
-      name: "Crochet Oasis Customer",
-      email: formData.email,
-    });
+    login(response.data.user);
 
     navigate("/");
-  };
+  } catch (error) {
+    console.error("Login failed:", error);
+
+    const message =
+      error.response?.data?.message ||
+      "Unable to login. Please check your credentials.";
+
+    alert(message);
+  }
+};
 
   return (
     <main className="auth-page">
@@ -105,6 +115,10 @@ function Login() {
               value={formData.password}
               onChange={handleChange}
             />
+
+            <Link to="/forgot-password">
+  Forgot Password?
+</Link>
 
           </div>
 

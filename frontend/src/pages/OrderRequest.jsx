@@ -31,36 +31,51 @@ const { createOrder } = useOrders();
     }));
 };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (!formData.name.trim() || !formData.phone.trim()) {
+  if (
+    !formData.name.trim() ||
+    !formData.phone.trim()
+  ) {
     alert("Please enter your name and phone number.");
     return;
   }
-  const order = createOrder({
-    customer: {
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email || user?.email || "",
-    },
 
-    items: cartItems.map((item) => ({
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-      image: item.image,
-    })),
+  try {
+    const order = await createOrder({
+      customer: {
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        email:
+          formData.email.trim() ||
+          user?.email ||
+          "",
+      },
 
-    total: cartTotal,
+      items: cartItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        image: item.image,
+      })),
 
-    notes: formData.notes,
-  });
+      total: cartTotal,
 
-  console.log("Order Created:", order);
+      notes: formData.notes.trim(),
+    });
 
-  setSubmitted(true);
+    console.log("Order Created:", order);
+
+    setSubmitted(true);
+  } catch (error) {
+    console.error("Order creation failed:", error);
+
+    alert(
+      "Unable to submit your order. Please make sure the backend is running."
+    );
+  }
 };
 
   const handleFinish = () => {

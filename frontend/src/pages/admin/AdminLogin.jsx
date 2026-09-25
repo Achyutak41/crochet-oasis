@@ -25,21 +25,20 @@ function AdminLogin() {
     setError("");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const result = login(
-      formData.email,
-      formData.password
-    );
+  const result = await login(
+    formData.email,
+    formData.password
+  );
 
-    if (!result.success) {
-      setError(result.message);
-      return;
-    }
-
+  if (result.success) {
     navigate("/admin");
-  };
+  } else {
+    setError(result.message);
+  }
+};
 
   return (
     <main className="admin-login-page">

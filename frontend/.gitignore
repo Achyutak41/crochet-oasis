@@ -7,6 +7,9 @@ dist/
 .env.*.local
 .vscode/
 .DS_Store
+crochet_oasis.db
+create_admin.py
+
 
 # Logs
 logs
@@ -32,3 +35,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
