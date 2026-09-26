@@ -3,6 +3,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import { ProductProvider } from "./context/ProductContext";
 import AdminLogin from "./pages/admin/AdminLogin";
 import ResetPassword from "./pages/ResetPassword";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 import AdminProtectedRoute
   from "./components/admin/AdminProtectedRoute";
@@ -50,6 +52,9 @@ function AppContent() {
           element={<Products />}
         />
 
+        <Route path="/about" element={<About />} />
+  <Route path="/contact" element={<Contact />} />
+
         <Route
           path="/products/:id"
           element={<ProductDetails />}
@@ -75,15 +80,7 @@ function AppContent() {
           element={<Register />}
         />
 
-        <Route
-          path="/about"
-          element={<About />}
-        />
-
-        <Route
-          path="/contact"
-          element={<Contact />}
-        />
+        
 
         <Route
           path="/orders"
