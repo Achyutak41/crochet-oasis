@@ -21,8 +21,6 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminProducts from "./pages/admin/AdminProducts";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
