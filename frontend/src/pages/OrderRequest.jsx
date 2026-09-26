@@ -136,7 +136,7 @@ const { createOrder } = useOrders();
           </div>
 
           <button
-            className="order-primary-button"
+            className="continue-shopping-btn"
             onClick={handleFinish}
           >
             Continue Shopping

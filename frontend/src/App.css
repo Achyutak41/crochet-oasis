@@ -4157,3 +4157,23 @@
   }
 
 }
+.continue-shopping-btn {
+  background: #e07a45;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.continue-shopping-btn:hover {
+  background: #c96532;
+  transform: translateY(-1px);
+}
+
+.continue-shopping-btn:active {
+  transform: translateY(0);
+}
