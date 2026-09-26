@@ -65,10 +65,10 @@ function About() {
           </div>
 
           <img
-      src="/public/Andal.jpeg"
-      alt="Andal - Creator of Crochet Oasis"
-      className="about-creator-photo"
-    />
+  src="/Andal.jpeg"
+  alt="Andal - Creator of Crochet Oasis"
+  className="about-creator-photo"
+/>
 
           <div className="about-story-decoration">
             🧶
