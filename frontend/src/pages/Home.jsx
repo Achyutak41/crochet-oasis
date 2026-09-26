@@ -1,47 +1,110 @@
-import { useProducts } from "../context/ProductContext";
+import { Link } from "react-router-dom";
 
 function Home() {
-  const { products } = useProducts();
   return (
     <main className="home-page">
 
-      {/* =========================
+      {/* =====================================================
           HERO SECTION
-      ========================= */}
+      ===================================================== */}
       <section className="hero">
 
         <div className="hero-content">
 
-          <p className="hero-tag">
-            HANDMADE WITH LOVE
-          </p>
+          <div className="hero-tag">
+            <span className="hero-tag-line"></span>
+            <span>HANDMADE WITH LOVE</span>
+          </div>
 
           <h1>
             Beautiful Crochet,
             <br />
-            Made Just For You.
+            <span>Made Just For You.</span>
           </h1>
 
           <p className="hero-description">
-            Discover beautiful handmade crochet products
-            crafted with care, creativity, and love.
+            Discover beautiful handmade crochet products crafted
+            with care, creativity, and love.
           </p>
 
-          <a
-            href="/products"
-            className="hero-button"
-          >
-            Explore Collection
-          </a>
+          <div className="hero-actions">
+
+            <Link to="/products" className="hero-btn">
+              Explore Collection
+              <span className="hero-btn-arrow">→</span>
+            </Link>
+
+            <Link to="/about" className="hero-secondary-btn">
+              Our Story
+            </Link>
+
+          </div>
+
+          <div className="hero-trust">
+
+            <div className="hero-trust-item">
+              <span className="trust-icon">🧶</span>
+              <span>Handmade</span>
+            </div>
+
+            <div className="hero-trust-divider"></div>
+
+            <div className="hero-trust-item">
+              <span className="trust-icon">♡</span>
+              <span>Made With Love</span>
+            </div>
+
+            <div className="hero-trust-divider"></div>
+
+            <div className="hero-trust-item">
+              <span className="trust-icon">✦</span>
+              <span>Unique Designs</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* HERO VISUAL */}
+
+        <div className="hero-visual">
+
+          <div className="hero-circle hero-circle-large"></div>
+          <div className="hero-circle hero-circle-small"></div>
+
+          <div className="yarn-art">
+
+            <div className="yarn-ball">
+              <span className="yarn-thread yarn-thread-1"></span>
+              <span className="yarn-thread yarn-thread-2"></span>
+              <span className="yarn-thread yarn-thread-3"></span>
+              <span className="yarn-thread yarn-thread-4"></span>
+            </div>
+
+            <div className="crochet-symbol">
+              🧶
+            </div>
+
+          </div>
+
+          <div className="hero-floating-card">
+            <span className="floating-card-icon">✦</span>
+
+            <div>
+              <strong>Made by Hand</strong>
+              <span>One piece at a time</span>
+            </div>
+          </div>
 
         </div>
 
       </section>
 
 
-      {/* =========================
-          INTRODUCTION SECTION
-      ========================= */}
+      {/* =====================================================
+          INTRODUCTION
+      ===================================================== */}
       <section className="intro-section">
 
         <div className="intro-content">
@@ -55,11 +118,11 @@ function Home() {
           </h2>
 
           <p>
-            At Crochet Oasis, every product is carefully
-            handmade with attention to detail. From beautiful
-            home decor to unique accessories and thoughtful
-            gifts, we create crochet products that bring
-            warmth and personality to your everyday life.
+            At Crochet Oasis, every product is carefully handmade
+            with attention to detail. From beautiful home decor
+            to unique accessories and thoughtful gifts, we create
+            crochet products that bring warmth and personality
+            to your everyday life.
           </p>
 
         </div>
@@ -67,9 +130,9 @@ function Home() {
       </section>
 
 
-      {/* =========================
-          CATEGORIES SECTION
-      ========================= */}
+      {/* =====================================================
+          CATEGORIES
+      ===================================================== */}
       <section className="categories">
 
         <div className="section-heading">
@@ -83,8 +146,7 @@ function Home() {
           </h2>
 
           <p>
-            Find something special for yourself or
-            someone you love.
+            Find something special for yourself or someone you love.
           </p>
 
         </div>
@@ -92,7 +154,8 @@ function Home() {
 
         <div className="category-grid">
 
-          {/* Home Decor */}
+          {/* HOME DECOR */}
+
           <div className="category-card">
 
             <div className="category-icon">
@@ -104,19 +167,20 @@ function Home() {
             </h3>
 
             <p>
-              Beautiful handmade crochet pieces
-              to make your home feel warmer and
-              more personal.
+              Beautiful handmade crochet pieces to make your
+              home feel warmer and more personal.
             </p>
 
-            <a href="/products">
-              Explore →
-            </a>
+            <Link to="/products" className="category-link">
+              Explore
+              <span>→</span>
+            </Link>
 
           </div>
 
 
-          {/* Accessories */}
+          {/* ACCESSORIES */}
+
           <div className="category-card">
 
             <div className="category-icon">
@@ -128,19 +192,20 @@ function Home() {
             </h3>
 
             <p>
-              Unique crochet bags and accessories
-              designed to add a handmade touch
-              to your everyday style.
+              Unique crochet bags and accessories designed
+              to add a handmade touch to your everyday style.
             </p>
 
-            <a href="/products">
-              Explore →
-            </a>
+            <Link to="/products" className="category-link">
+              Explore
+              <span>→</span>
+            </Link>
 
           </div>
 
 
-          {/* Gifts */}
+          {/* GIFTS */}
+
           <div className="category-card">
 
             <div className="category-icon">
@@ -152,14 +217,14 @@ function Home() {
             </h3>
 
             <p>
-              Thoughtful handmade crochet gifts
-              for birthdays, celebrations and
-              special moments.
+              Thoughtful handmade crochet gifts for birthdays,
+              celebrations and special moments.
             </p>
 
-            <a href="/products">
-              Explore →
-            </a>
+            <Link to="/products" className="category-link">
+              Explore
+              <span>→</span>
+            </Link>
 
           </div>
 
@@ -168,9 +233,9 @@ function Home() {
       </section>
 
 
-      {/* =========================
+      {/* =====================================================
           WHY CROCHET OASIS
-      ========================= */}
+      ===================================================== */}
       <section className="why-section">
 
         <div className="section-heading">
@@ -182,6 +247,11 @@ function Home() {
           <h2>
             Made Differently
           </h2>
+
+          <p>
+            Every creation is made with care, creativity and
+            attention to the little details.
+          </p>
 
         </div>
 
@@ -199,8 +269,8 @@ function Home() {
             </h3>
 
             <p>
-              Every piece is carefully crafted
-              by hand with attention to detail.
+              Every piece is carefully crafted by hand
+              with attention to detail.
             </p>
 
           </div>
@@ -209,7 +279,7 @@ function Home() {
           <div className="feature-card">
 
             <div className="feature-icon">
-              ❤️
+              ♡
             </div>
 
             <h3>
@@ -217,8 +287,8 @@ function Home() {
             </h3>
 
             <p>
-              Each creation carries the care
-              and passion behind handmade work.
+              Each creation carries the care and passion
+              behind handmade work.
             </p>
 
           </div>
@@ -227,7 +297,7 @@ function Home() {
           <div className="feature-card">
 
             <div className="feature-icon">
-              ✨
+              ✦
             </div>
 
             <h3>
@@ -235,8 +305,8 @@ function Home() {
             </h3>
 
             <p>
-              Discover products that are different
-              from ordinary mass-produced items.
+              Discover products that are different from
+              ordinary mass-produced items.
             </p>
 
           </div>
@@ -253,8 +323,8 @@ function Home() {
             </h3>
 
             <p>
-              Create something special with our
-              made-to-order crochet products.
+              Create something special with our made-to-order
+              crochet products.
             </p>
 
           </div>
@@ -264,9 +334,9 @@ function Home() {
       </section>
 
 
-      {/* =========================
+      {/* =====================================================
           FEATURED PRODUCTS
-      ========================= */}
+      ===================================================== */}
       <section className="featured-section">
 
         <div className="section-heading">
@@ -296,9 +366,15 @@ function Home() {
 
             <div className="featured-info">
 
-              <h3>
-                Crochet Flower Bouquet
-              </h3>
+              <div>
+                <span className="featured-category">
+                  Handmade
+                </span>
+
+                <h3>
+                  Crochet Flower Bouquet
+                </h3>
+              </div>
 
               <p>
                 ₹799
@@ -317,9 +393,15 @@ function Home() {
 
             <div className="featured-info">
 
-              <h3>
-                Handmade Crochet Bag
-              </h3>
+              <div>
+                <span className="featured-category">
+                  Accessories
+                </span>
+
+                <h3>
+                  Handmade Crochet Bag
+                </h3>
+              </div>
 
               <p>
                 ₹999
@@ -338,9 +420,15 @@ function Home() {
 
             <div className="featured-info">
 
-              <h3>
-                Crochet Teddy Bear
-              </h3>
+              <div>
+                <span className="featured-category">
+                  Gifts
+                </span>
+
+                <h3>
+                  Crochet Teddy Bear
+                </h3>
+              </div>
 
               <p>
                 ₹599
@@ -355,21 +443,22 @@ function Home() {
 
         <div className="view-all-container">
 
-          <a
-            href="/products"
+          <Link
+            to="/products"
             className="view-all-button"
           >
             View All Products
-          </a>
+            <span>→</span>
+          </Link>
 
         </div>
 
       </section>
 
 
-      {/* =========================
+      {/* =====================================================
           CUSTOM ORDER CTA
-      ========================= */}
+      ===================================================== */}
       <section className="custom-order-section">
 
         <div className="custom-order-content">
@@ -383,17 +472,17 @@ function Home() {
           </h2>
 
           <p>
-            Have an idea in mind? We also create
-            made-to-order crochet products based
-            on your preferences.
+            Have an idea in mind? We also create made-to-order
+            crochet products based on your preferences.
           </p>
 
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="hero-button"
           >
             Contact Us
-          </a>
+            <span>→</span>
+          </Link>
 
         </div>
 

@@ -4177,3 +4177,1143 @@
 .continue-shopping-btn:active {
   transform: translateY(0);
 }
+
+/* ========================================
+   CROCHET OASIS HOME PAGE
+======================================== */
+
+.home-page {
+  width: 100%;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  min-height: 680px;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+
+  gap: 60px;
+
+  padding: 80px 9%;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(255, 255, 255, 0.55),
+      transparent 28%
+    ),
+    #f7e8d8;
+
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+
+/* ========================================
+   HERO TAG
+======================================== */
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  color: #b95e32;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.hero-tag-line {
+  width: 32px;
+  height: 2px;
+
+  background: #d97745;
+
+  border-radius: 10px;
+}
+
+
+/* ========================================
+   HERO TITLE
+======================================== */
+
+.hero h1 {
+  margin: 0 0 24px;
+
+  color: #2d241f;
+
+  font-size: clamp(48px, 5vw, 70px);
+
+  line-height: 1.05;
+
+  letter-spacing: -1.5px;
+
+  font-weight: 750;
+}
+
+.hero h1 span {
+  color: #b95e32;
+}
+
+
+/* ========================================
+   HERO DESCRIPTION
+======================================== */
+
+.hero-description {
+  max-width: 560px;
+
+  margin-bottom: 32px;
+
+  color: #6d625b;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   HERO ACTIONS
+======================================== */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 35px;
+}
+
+
+/* PRIMARY BUTTON */
+
+.hero-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 14px 23px;
+
+  background: #d97745;
+  color: white;
+
+  border: 1px solid #d97745;
+
+  border-radius: 9px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-btn:hover {
+  background: #b95e32;
+  color: white;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 20px rgba(185, 94, 50, 0.20);
+}
+
+.hero-btn-arrow {
+  font-size: 20px;
+
+  line-height: 1;
+
+  transition: transform 0.2s ease;
+}
+
+.hero-btn:hover .hero-btn-arrow {
+  transform: translateX(4px);
+}
+
+
+/* SECONDARY BUTTON */
+
+.hero-secondary-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 22px;
+
+  border: 1px solid #d9bca8;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  color: #5d493e;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hero-secondary-btn:hover {
+  background: white;
+
+  border-color: #d97745;
+
+  color: #b95e32;
+
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   HERO TRUST ITEMS
+======================================== */
+
+.hero-trust {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: #6d625b;
+
+  font-size: 13px;
+}
+
+.hero-trust-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  white-space: nowrap;
+}
+
+.trust-icon {
+  color: #b95e32;
+
+  font-size: 16px;
+}
+
+.hero-trust-divider {
+  width: 1px;
+  height: 18px;
+
+  background: #d9bca8;
+}
+
+
+/* ========================================
+   HERO VISUAL
+======================================== */
+
+.hero-visual {
+  position: relative;
+
+  min-height: 500px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Decorative circles */
+
+.hero-circle {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.hero-circle-large {
+  width: 400px;
+  height: 400px;
+
+  background: #efd0b8;
+
+  opacity: 0.8;
+}
+
+.hero-circle-small {
+  width: 130px;
+  height: 130px;
+
+  right: 30px;
+  top: 50px;
+
+  background: #e5b08e;
+
+  opacity: 0.7;
+}
+
+
+/* ========================================
+   YARN ART
+======================================== */
+
+.yarn-art {
+  position: relative;
+
+  z-index: 2;
+
+  width: 330px;
+  height: 330px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.yarn-ball {
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #f4b28d 0,
+      #e88a5a 32%,
+      #d96f3d 70%,
+      #b95e32 100%
+    );
+
+  box-shadow:
+    0 25px 45px rgba(120, 65, 40, 0.20);
+}
+
+
+/* Yarn lines */
+
+.yarn-thread {
+  position: absolute;
+
+  display: block;
+
+  border: 3px solid rgba(255, 255, 255, 0.38);
+
+  border-radius: 50%;
+}
+
+.yarn-thread-1 {
+  width: 205px;
+  height: 95px;
+
+  left: 25px;
+  top: 80px;
+
+  transform: rotate(-18deg);
+}
+
+.yarn-thread-2 {
+  width: 180px;
+  height: 80px;
+
+  left: 45px;
+  top: 100px;
+
+  transform: rotate(22deg);
+}
+
+.yarn-thread-3 {
+  width: 140px;
+  height: 70px;
+
+  left: 60px;
+  top: 105px;
+
+  transform: rotate(-38deg);
+}
+
+.yarn-thread-4 {
+  width: 230px;
+  height: 120px;
+
+  left: 15px;
+  top: 70px;
+
+  transform: rotate(42deg);
+}
+
+
+/* Crochet symbol */
+
+.crochet-symbol {
+  position: relative;
+
+  z-index: 3;
+
+  font-size: 80px;
+
+  filter:
+    drop-shadow(
+      0 8px 10px rgba(70, 40, 25, 0.15)
+    );
+}
+
+
+/* ========================================
+   FLOATING CARD
+======================================== */
+
+.hero-floating-card {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 0;
+  bottom: 35px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid #eaded4;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 12px 30px rgba(70, 40, 25, 0.10);
+}
+
+.floating-card-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f9eee5;
+
+  color: #d97745;
+
+  font-size: 17px;
+}
+
+.hero-floating-card div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.hero-floating-card strong {
+  color: #302621;
+
+  font-size: 13px;
+}
+
+.hero-floating-card span:last-child {
+  color: #8a7970;
+
+  font-size: 11px;
+}
+
+
+/* ========================================
+   COMMON SECTION TAG
+======================================== */
+
+.section-tag {
+  margin-bottom: 10px;
+
+  color: #d97745;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* ========================================
+   INTRODUCTION
+======================================== */
+
+.intro-section {
+  padding: 80px 10%;
+
+  background: #fffaf5;
+
+  text-align: center;
+}
+
+.intro-content {
+  max-width: 850px;
+
+  margin: 0 auto;
+}
+
+.intro-content h2 {
+  margin-bottom: 18px;
+
+  color: #2d241f;
+
+  font-size: 36px;
+
+  line-height: 1.2;
+}
+
+.intro-content > p:last-child {
+  color: #6d625b;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   SECTION HEADING
+======================================== */
+
+.section-heading {
+  max-width: 700px;
+
+  margin: 0 auto 45px;
+
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin-bottom: 12px;
+
+  color: #2d241f;
+
+  font-size: 36px;
+
+  line-height: 1.2;
+}
+
+.section-heading > p:last-child {
+  color: #6d625b;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   CATEGORIES
+======================================== */
+
+.categories {
+  padding: 85px 10%;
+
+  background: #fffaf5;
+
+  text-align: center;
+}
+
+.category-grid {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.category-card {
+  padding: 38px 28px;
+
+  background: white;
+
+  border: 1px solid #eaded4;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #e4c7b5;
+
+  box-shadow:
+    0 15px 30px rgba(60, 40, 30, 0.08);
+}
+
+.category-icon {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #f9eee5;
+
+  font-size: 28px;
+}
+
+.category-card h3 {
+  margin-bottom: 12px;
+
+  color: #2d241f;
+
+  font-size: 21px;
+}
+
+.category-card p {
+  min-height: 75px;
+
+  margin-bottom: 22px;
+
+  color: #6d625b;
+
+  line-height: 1.6;
+}
+
+.category-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #d97745;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: gap 0.2s ease;
+}
+
+.category-link:hover {
+  gap: 11px;
+
+  color: #b95e32;
+}
+
+
+/* ========================================
+   WHY CROCHET OASIS
+======================================== */
+
+.why-section {
+  padding: 85px 10%;
+
+  background: #f9eee5;
+}
+
+.features-grid {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.feature-card {
+  padding: 32px 22px;
+
+  background: white;
+
+  border: 1px solid #eaded4;
+
+  border-radius: 14px;
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.feature-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 17px;
+
+  border-radius: 50%;
+
+  background: #fff3e9;
+
+  color: #d97745;
+
+  font-size: 26px;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+
+  color: #2d241f;
+
+  font-size: 18px;
+}
+
+.feature-card p {
+  color: #6d625b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   FEATURED PRODUCTS
+======================================== */
+
+.featured-section {
+  padding: 85px 10%;
+
+  background: #fffaf5;
+}
+
+.featured-grid {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.featured-card {
+  overflow: hidden;
+
+  background: white;
+
+  border: 1px solid #eaded4;
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.featured-placeholder {
+  height: 230px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #f3d2bc,
+      #f7e8d8
+    );
+
+  font-size: 58px;
+}
+
+.featured-info {
+  padding: 20px;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.featured-category {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #b95e32;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+}
+
+.featured-info h3 {
+  margin: 0;
+
+  color: #2d241f;
+
+  font-size: 17px;
+
+  line-height: 1.35;
+}
+
+.featured-info p {
+  flex-shrink: 0;
+
+  margin: 0;
+
+  color: #d97745;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+
+/* ========================================
+   VIEW ALL
+======================================== */
+
+.view-all-container {
+  margin-top: 35px;
+
+  text-align: center;
+}
+
+.view-all-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 12px 23px;
+
+  border: 1px solid #d97745;
+
+  border-radius: 8px;
+
+  color: #d97745;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    gap 0.2s ease;
+}
+
+.view-all-button:hover {
+  background: #d97745;
+
+  color: white;
+
+  gap: 13px;
+}
+
+
+/* ========================================
+   CUSTOM ORDER
+======================================== */
+
+.custom-order-section {
+  padding: 90px 10%;
+
+  background: #f7e8d8;
+
+  text-align: center;
+}
+
+.custom-order-content {
+  max-width: 700px;
+
+  margin: 0 auto;
+}
+
+.custom-order-content h2 {
+  margin-bottom: 15px;
+
+  color: #2d241f;
+
+  font-size: 36px;
+
+  line-height: 1.2;
+}
+
+.custom-order-content > p:not(.section-tag) {
+  margin-bottom: 28px;
+
+  color: #6d625b;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   CONTACT BUTTON
+======================================== */
+
+.hero-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 14px 25px;
+
+  border: 1px solid #d97745;
+
+  border-radius: 8px;
+
+  background: #d97745;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hero-button:hover {
+  background: #b95e32;
+
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   HOME RESPONSIVE
+======================================== */
+
+@media (max-width: 1000px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+
+    padding: 80px 7%;
+  }
+
+  .hero-content {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  .hero-tag {
+    justify-content: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-trust {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 420px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-grid,
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .hero {
+    padding: 60px 6%;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+
+    letter-spacing: -0.8px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .hero-btn,
+  .hero-secondary-btn {
+    width: 100%;
+  }
+
+  .hero-trust {
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  .hero-trust-divider {
+    display: none;
+  }
+
+  .hero-visual {
+    min-height: 340px;
+  }
+
+  .hero-circle-large {
+    width: 280px;
+    height: 280px;
+  }
+
+  .yarn-art {
+    width: 260px;
+    height: 260px;
+  }
+
+  .yarn-ball {
+    width: 210px;
+    height: 210px;
+  }
+
+  .crochet-symbol {
+    font-size: 65px;
+  }
+
+  .hero-floating-card {
+    right: 0;
+
+    bottom: 5px;
+  }
+
+  .intro-section,
+  .categories,
+  .why-section,
+  .featured-section,
+  .custom-order-section {
+    padding: 60px 6%;
+  }
+
+  .intro-content h2,
+  .section-heading h2,
+  .custom-order-content h2 {
+    font-size: 30px;
+  }
+
+  .category-grid,
+  .featured-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-placeholder {
+    height: 210px;
+  }
+
+  .featured-info {
+    align-items: center;
+  }
+}
