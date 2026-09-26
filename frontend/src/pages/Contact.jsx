@@ -110,9 +110,11 @@ function Contact() {
           {/* EMAIL */}
 
           <a
-            href={`mailto:${emailAddress}?subject=Contact`}
-            className="contact-card"
-          >
+  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=Contact`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="contact-card"
+>
 
             <div className="contact-icon">
               ✉
