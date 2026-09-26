@@ -5487,6 +5487,25 @@
   font-size: 11px;
 }
 
+/* =====================================================
+   ABOUT - CREATOR STORY
+===================================================== */
+
+.about-story {
+  max-width: 1150px;
+  margin: 0 auto;
+
+  padding: 100px 6%;
+
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+
+  align-items: center;
+
+  gap: 80px;
+}
+
+
 .about-story-image {
   min-height: 430px;
 
@@ -5529,6 +5548,7 @@
   object-position: center 25%;
 }
 
+
 /* Crochet badge */
 .about-story-decoration {
   position: absolute;
@@ -5553,6 +5573,112 @@
 
   box-shadow:
     0 10px 25px rgba(80, 45, 30, 0.18);
+}
+
+/* =====================================================
+   CREATOR STORY CONTENT
+===================================================== */
+
+.about-story-content {
+  max-width: 650px;
+}
+
+.about-story-content .section-tag {
+  margin-bottom: 12px;
+
+  color: #d97745;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.about-story-content h2 {
+  margin: 0 0 22px;
+
+  color: #2d241f;
+
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.about-story-content p {
+  margin: 0 0 17px;
+
+  color: #6d625b;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-story-content strong {
+  color: #b95e32;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .about-story {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    text-align: center;
+  }
+
+  .about-story-image {
+    min-height: 370px;
+  }
+
+  .about-story-content {
+    margin: 0 auto;
+  }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .about-story {
+    padding: 60px 6%;
+  }
+
+  .about-photo-frame {
+    width: 250px;
+    height: 250px;
+
+    border-width: 8px;
+  }
+
+  .about-story-image {
+    min-height: 300px;
+  }
+
+  .about-story-decoration {
+    right: 20px;
+    bottom: 10px;
+
+    width: 62px;
+    height: 62px;
+
+    font-size: 26px;
+  }
+
+  .about-story-content h2 {
+    font-size: 32px;
+  }
+
+  .about-story-content p {
+    font-size: 15px;
+  }
+
 }
 
 
