@@ -60,21 +60,19 @@ function About() {
 
         <div className="about-story-image">
 
-          <div className="about-profile-circle">
-            A
-          </div>
+  <div className="about-photo-frame">
+    <img
+      src="/Andal.jpeg"
+      alt="Andal - Creator of Crochet Oasis"
+      className="about-creator-photo"
+    />
+  </div>
 
-          <img
-  src="/Andal.jpeg"
-  alt="Andal - Creator of Crochet Oasis"
-  className="about-creator-photo"
-/>
+  <div className="about-story-decoration">
+    🧶
+  </div>
 
-          <div className="about-story-decoration">
-            🧶
-          </div>
-
-        </div>
+</div>
 
 
         <div className="about-story-content">
