@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+
 import axios from "axios";
 
 const ProductContext = createContext();
@@ -10,7 +16,16 @@ export function ProductProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch products
+  // =========================================================
+  // Get Admin JWT Token
+  // =========================================================
+  const getAdminToken = () => {
+    return localStorage.getItem("crochetOasisAdminToken");
+  };
+
+  // =========================================================
+  // Fetch Products
+  // =========================================================
   const fetchProducts = async () => {
     try {
       setLoading(true);
@@ -20,24 +35,39 @@ export function ProductProvider({ children }) {
 
       setProducts(response.data);
     } catch (err) {
-      console.error("Failed to fetch products:", err);
+      console.error(
+        "Failed to fetch products:",
+        err.response?.data || err
+      );
+
       setError("Unable to load products.");
     } finally {
       setLoading(false);
     }
   };
 
-  // Load products when app starts
+  // =========================================================
+  // Load Products When App Starts
+  // =========================================================
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  // Add product
+  // =========================================================
+  // Add Product
+  // =========================================================
   const addProduct = async (productData) => {
     try {
+      const token = getAdminToken();
+
       const response = await axios.post(
         `${API_URL}/`,
-        productData
+        productData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setProducts((currentProducts) => [
@@ -47,17 +77,33 @@ export function ProductProvider({ children }) {
 
       return response.data;
     } catch (err) {
-      console.error("Failed to add product:", err);
+      console.error(
+        "Failed to add product:",
+        err.response?.data || err
+      );
+
       throw err;
     }
   };
 
-  // Update product
-  const updateProduct = async (productId, productData) => {
+  // =========================================================
+  // Update Product
+  // =========================================================
+  const updateProduct = async (
+    productId,
+    productData
+  ) => {
     try {
+      const token = getAdminToken();
+
       const response = await axios.put(
         `${API_URL}/${productId}`,
-        productData
+        productData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setProducts((currentProducts) =>
@@ -70,16 +116,29 @@ export function ProductProvider({ children }) {
 
       return response.data;
     } catch (err) {
-      console.error("Failed to update product:", err);
+      console.error(
+        "Failed to update product:",
+        err.response?.data || err
+      );
+
       throw err;
     }
   };
 
-  // Delete product
+  // =========================================================
+  // Delete Product
+  // =========================================================
   const deleteProduct = async (productId) => {
     try {
+      const token = getAdminToken();
+
       await axios.delete(
-        `${API_URL}/${productId}`
+        `${API_URL}/${productId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       setProducts((currentProducts) =>
@@ -88,11 +147,18 @@ export function ProductProvider({ children }) {
         )
       );
     } catch (err) {
-      console.error("Failed to delete product:", err);
+      console.error(
+        "Failed to delete product:",
+        err.response?.data || err
+      );
+
       throw err;
     }
   };
 
+  // =========================================================
+  // Context Provider
+  // =========================================================
   return (
     <ProductContext.Provider
       value={{
@@ -110,6 +176,9 @@ export function ProductProvider({ children }) {
   );
 }
 
+// =========================================================
+// Custom Hook
+// =========================================================
 export function useProducts() {
   return useContext(ProductContext);
 }

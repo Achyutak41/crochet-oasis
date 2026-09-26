@@ -9,7 +9,9 @@ export function AdminAuthProvider({ children }) {
   const [admin, setAdmin] = useState(() => {
     const savedAdmin = localStorage.getItem("crochetOasisAdmin");
 
-    return savedAdmin ? JSON.parse(savedAdmin) : null;
+    return savedAdmin
+      ? JSON.parse(savedAdmin)
+      : null;
   });
 
   const login = async (email, password) => {
@@ -23,7 +25,9 @@ export function AdminAuthProvider({ children }) {
       );
 
       const adminData = response.data.user;
+      const accessToken = response.data.access_token;
 
+      // Save admin user
       setAdmin(adminData);
 
       localStorage.setItem(
@@ -31,12 +35,21 @@ export function AdminAuthProvider({ children }) {
         JSON.stringify(adminData)
       );
 
+      // Save JWT token
+      localStorage.setItem(
+        "crochetOasisAdminToken",
+        accessToken
+      );
+
       return {
         success: true,
         user: adminData,
       };
     } catch (error) {
-      console.error("Admin login failed:", error);
+      console.error(
+        "Admin login failed:",
+        error.response?.data || error
+      );
 
       return {
         success: false,
@@ -49,7 +62,14 @@ export function AdminAuthProvider({ children }) {
 
   const logout = () => {
     setAdmin(null);
-    localStorage.removeItem("crochetOasisAdmin");
+
+    localStorage.removeItem(
+      "crochetOasisAdmin"
+    );
+
+    localStorage.removeItem(
+      "crochetOasisAdminToken"
+    );
   };
 
   const isAdminAuthenticated = admin !== null;
